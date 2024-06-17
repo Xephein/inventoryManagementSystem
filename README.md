@@ -6,6 +6,9 @@ It uses 3 datatables to store information on people who would like to borrow ite
 
 Databases are wiped to ensure no privacy issues.
 
+
+The project is not considered finished. There are still a list of improvements to made.
+
 ## Database schema:
 
 Add database into a folder named data within the root.
