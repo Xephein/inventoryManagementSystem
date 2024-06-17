@@ -8,6 +8,8 @@ Databases are wiped to ensure no privacy issues.
 
 ## Database schema:
 
+Add database into a folder named data within the root.
+
 CREATE TABLE members(
 id INTEGER NOT NULL UNIQUE PRIMARY KEY AUTOINCREMENT,
 member_name TEXT NOT NULL,
