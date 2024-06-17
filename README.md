@@ -14,6 +14,7 @@ member_name TEXT NOT NULL,
 telephone TEXT NOT NULL,
 can_borrow INTEGER DEFAULT "1" NOT NULL
 );
+
 CREATE TABLE sqlite_sequence(name,seq);
 CREATE TABLE items(
 id INTEGER NOT NULL UNIQUE PRIMARY KEY AUTOINCREMENT,
@@ -23,6 +24,7 @@ category TEXT NOT NULL,
 description TEXT,
 can_be_borrowed INTEGER DEFAULT "1" NOT NULL
 );
+
 CREATE TABLE borrows(
 id INTEGER NOT NULL UNIQUE PRIMARY KEY AUTOINCREMENT,
 member_id INTEGER NOT NULL,
