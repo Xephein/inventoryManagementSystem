@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block nav %}
+<a href="{{  url_for('admin')  }}">Admin</a>
+<a href="{{  url_for('adminMembers')  }}">Taglista</a>
+<a href="{{  url_for('adminItems')  }}">Tárgylista</a>
+<a href="{{  url_for('adminBorrows')  }}">Kölcsönzések</a>
+<a href="{{  url_for('upload')  }}">Feltöltés</a>
+{% endblock %}
+
+{% block col2 %}
+
+<h2>Használati útmutató</h2>
+<h3>Tartalom</h3>
+<ul style="list-style-type: none;">
+    <li>1. <a href="#members">Taglista</a></li>
+    <li>2. <a href="#items">Tárgylista</a></li>
+    <li>3. <a href="#borrows">Kölcsönzések</a></li>
+    <li>4. <a href="#upload">Adat feltöltés</a></li>
+</ul>
+
+<h3 id="members">Taglista</h3>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus excepturi et, sed sit molestiae repudiandae saepe ullam eos illum, illo facere cum dolorum asperiores itaque veniam, magnam labore incidunt iste!
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit consectetur modi aut dicta, quibusdam voluptas, ut accusantium harum labore sunt dolores facilis repudiandae doloremque quas culpa distinctio ipsam tempora numquam.
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum, ab dolores commodi facilis esse delectus, accusamus saepe, dolore magnam ut ipsa natus alias voluptate consequatur mollitia sapiente quisquam facere similique.
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab facilis, numquam facere eligendi modi dolor libero commodi id hic veniam nihil, assumenda sequi corporis voluptatibus rem tenetur mollitia iste perspiciatis.
+</p>
+
+<h3 id="items">Tárgylista</h3>
+
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus excepturi et, sed sit molestiae repudiandae saepe ullam eos illum, illo facere cum dolorum asperiores itaque veniam, magnam labore incidunt iste!
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit consectetur modi aut dicta, quibusdam voluptas, ut accusantium harum labore sunt dolores facilis repudiandae doloremque quas culpa distinctio ipsam tempora numquam.
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum, ab dolores commodi facilis esse delectus, accusamus saepe, dolore magnam ut ipsa natus alias voluptate consequatur mollitia sapiente quisquam facere similique.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab facilis, numquam facere eligendi modi dolor libero commodi id hic veniam nihil, assumenda sequi corporis voluptatibus rem tenetur mollitia iste perspiciatis.
+    </p>
+
+<h3 id="borrows">Kölcsönzések</h3>
+
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus excepturi et, sed sit molestiae repudiandae saepe ullam eos illum, illo facere cum dolorum asperiores itaque veniam, magnam labore incidunt iste!
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit consectetur modi aut dicta, quibusdam voluptas, ut accusantium harum labore sunt dolores facilis repudiandae doloremque quas culpa distinctio ipsam tempora numquam.
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum, ab dolores commodi facilis esse delectus, accusamus saepe, dolore magnam ut ipsa natus alias voluptate consequatur mollitia sapiente quisquam facere similique.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab facilis, numquam facere eligendi modi dolor libero commodi id hic veniam nihil, assumenda sequi corporis voluptatibus rem tenetur mollitia iste perspiciatis.
+    </p>
+
+<h3 id="upload">Adat feltöltés</h3>
+
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus excepturi et, sed sit molestiae repudiandae saepe ullam eos illum, illo facere cum dolorum asperiores itaque veniam, magnam labore incidunt iste!
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit consectetur modi aut dicta, quibusdam voluptas, ut accusantium harum labore sunt dolores facilis repudiandae doloremque quas culpa distinctio ipsam tempora numquam.
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum, ab dolores commodi facilis esse delectus, accusamus saepe, dolore magnam ut ipsa natus alias voluptate consequatur mollitia sapiente quisquam facere similique.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab facilis, numquam facere eligendi modi dolor libero commodi id hic veniam nihil, assumenda sequi corporis voluptatibus rem tenetur mollitia iste perspiciatis.
+    </p>
+{% endblock %}

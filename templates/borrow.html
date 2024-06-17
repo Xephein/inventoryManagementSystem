@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block col2 %}
+
+{% if alert %}
+<div class="alert">
+    {{  alert  }}
+    <br>
+    {% if interrupted %}
+    A kölcsönző: {{  interrupted[0]["member_name"]  }}. A kölcsönző elérhetőségei: {{  interrupted[0]["email"]  }}
+        {% if interrupted[0]["telephone"] %}
+        , {{  interrupted[0]["telephone"]  }}
+        {% endif %}
+    {% endif %}
+</div>
+
+{% elif success %}
+<div class="success">{{  success  }}</div>
+{% endif %}
+
+<div class="maingrid">
+    
+    <input style="margin: 1vh 3vw;" class="gridsearchbar" type="text" id="filterInput" onkeyup="tableFilter()" placeholder="Keresés a nevek vagy tárgyak között...">
+
+    <form class="gridform" action="/borrow/form" method="post">
+        <div style="display: grid; grid-template-columns: [first] 25% [second] 75% [end]">
+            {% if cat %}
+            <label class="innerleft">Teljes Név:</label>
+            <input class="innerright" list="members" autocomplete="off" type="text" value="{{  name  }}" name="name">
+            <label class="innerleft">Kategória: </label>
+            <input class="innerright" list="categories" autocomplete="off" type="text" value="{{  cat  }}" name="category">
+            <button class="innerright" type="submit" formaction="/borrow/category">Szűrés</button>
+            {% else %}
+            <label class="innerleft">Teljes Név:</label>
+            <input class="innerright;" list="members" autocomplete="off" type="text" placeholder="Név" name="name">
+            <label class="innerleft">Kategória: </label>
+            <input class="innerright" list="categories" autocomplete="off" type="text" placeholder="Kategória" name="category">
+            <button class="innerright" type="submit" formaction="/borrow/category">Szűrés</button>
+            {% endif %}
+            <label class="innerleft">Tárgy:</label>
+            <input class="innerright" list="items" autocomplete="off" type="text" placeholder="Tárgy" name="item">
+            <label class="innerleft">Start Date</label>
+            <input class="innerright" type="date" name="startDate" min="{{  today  }}">
+            <label class="innerleft">Planned return</label>
+            <input class="innerright" type="date" name="planDate" min="{{  today  }}">
+            <div class="innerright doublebuttoncell">
+                <button class="innerleft" type="reset">Újrakezdés</button>
+                <button class="thirdcolumn" type="submit">Kölcsönzés</button>
+            </div>
+        </div>
+        
+        
+    </form>
+    <div class="gridtable">
+        <table id="toFilter" class="gridtable">
+            <tr>
+                <th>Név</th>
+                <th>Kölcsönzött Tárgy</th>
+                <th>Kölcsönzés Kezdete</th>
+                <th>Kölcsönzés Vége</th>
+                <th>Elérhetőség</th>
+            </tr>
+        
+            {% for row in bStuff %}
+            <tr>
+                <td>{{  row["member_name"]  }}</td>
+                <td>{{  row["item_name"]  }}</td>
+                <td>{{  row["start_date"]}}</td>
+                <td>{{  row["plan_date"]  }}</td>
+                <td>{{  row["email"]  }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="gridthirdrow innerleft">
+        <h3>Használati útmutató</h3>
+        <p>Ezen a felületen tudod a leendő kölcsönzéseidet tervezni és nyilvántartásba venni. Ehhez szükséges megadnod a neved, a tárgyat, amit kölcsönzöl, és a kölcsönzés időtartalmát. <br>
+        A kategória szűrő segítségével szűkíteni tudod a keresett tárgyak listáját.<br>
+        A jobb oldali táblában a jelenleg kölcsönzött és a jövőben kölcsönzésre váró tárgyak listáját látod. A tábla felett található mező segítségével a nevek és tárgyak között tudsz keresni. <br>
+        Amennyiben hibás kölcsönzést viszel fel a rendszerbe, úgy a DB valamely tagja felé jelezd, akik azt törlik a rendszerből. Ehhez add meg, hogy melyik tárgyat, és milyen időpontokra kölcsönöztél.<br>
+        <strong>Figyelem:</strong> a rendszer nem enged olyan kölcsönzéseket rögzíteni, amely más kölcsönzések időtartamába esnek. Így minden esetben, a hibásan rögzített kölcsönzést a visszavételezés modul segítségével, "hozd vissza" és ezzel felszabadul ismét az adott idősáv. Ettől a visszahozástól függetlenül kérd meg a DB-t, hogy a hibás (de "visszahozott") rögzítést törölje a rendszerből (a visszavételezést követően a kölcsönzés modulban már nem fog látszódni a kölcsönzés, de a rendszer számon tartja lezárt kölcsönzésként). </p>
+    </div>
+</div>
+
+
+<datalist id="members">
+    {% for member in members %}
+    <option value="{{  member['id']  }}. {{  member['member_name']  }}"></option>
+    {% endfor %}
+</datalist>
+
+<datalist id="categories">
+    {% for category in categories %}
+    <option value="{{  category['category']  }}"></option>
+    {% endfor %}
+</datalist>
+
+<datalist id="items">
+    {% for item in items %}
+    <option value="{{  item['id']  }}. {{  item['item_name']  }}"></option>
+    {% endfor %}
+</datalist>
+
+
+
+
+{% endblock %}

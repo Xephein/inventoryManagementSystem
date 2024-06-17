@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block nav %}
+<a href="{{  url_for('admin')  }}">Admin</a>
+<a href="{{  url_for('adminMembers')  }}">Taglista</a>
+<a href="{{  url_for('adminItems')  }}">Tárgylista</a>
+<a href="{{  url_for('adminBorrows')  }}">Kölcsönzések</a>
+<a href="{{  url_for('upload')  }}">Feltöltés</a>
+{% endblock %}
+
+{% block col2 %}
+<div class="formsubgrid">
+    <form class="innerleft" action="/upload/form", method="post" enctype="multipart/form-data">
+        <div class="formsubgrid">
+            <label class="innerleft">Upload your file: </label>
+            <input class="innerright" type="file" name="inputFile" accept=".csv">
+            <label class="innerleft">Kódolás: </label>
+            <div class="innerright">
+                <input class="radioleft" type="radio" name="encoding" value="cp1250" id="cp1250">
+                <label for="cp1250">cp1250</label>
+            </div>
+            <div class="innerright">
+                <input class="radioleft" type="radio" name="encoding" value="utf-8" id="utf8">
+                <label for="utf8">utf-8</label> 
+            </div>
+            <label class="innerleft">Lista:</label>
+            <div class="innerright">
+                <input class="radioleft" type="radio" name="table" value="members" id="memb">
+                <label for="memb">Taglista</label>
+            </div>
+            <div class="innerright">
+                <input class="radioleft" type="radio" name="table" value="items" id="items">
+                <label for="items">Tárgylista</label>
+            </div>
+            <label class="innerleft">Oszlopválasztó karakter: </label>
+            <input class="innerright" type="text" name="delimiter" autocomplete="off">
+            <input class="innerright" type="submit" value="Upload">
+        </div>
+    </form>
+    <form class="innerright, hcenter" action="/admin/override" method="post" enctype="multipart/form-data">
+        <label class="innerleft">Upload your file: </label>
+        <input class="innerright" type="file" name="inputFile" accept=".csv">
+        <label class="innerleft">Kódolás: </label>
+        <br>
+        <div class="innerright">
+            <input class="radioleft" type="radio" name="encoding" value="cp1250" id="cp1250">
+            <label for="cp1250">cp1250</label>
+        </div>
+        <div class="innerright">
+            <input class="radioleft" type="radio" name="encoding" value="utf-8" id="utf8">
+            <label for="utf8">utf-8</label> 
+        </div>
+        <label class="innerleft">Lista:</label>
+        <div class="innerright">
+            <input class="radioleft" type="radio" name="table" value="members" id="memb">
+            <label for="memb">Taglista</label>
+        </div>
+        <div class="innerright">
+            <input class="radioleft" type="radio" name="table" value="items" id="items">
+            <label for="items">Tárgylista</label>
+        </div>
+        <label class="innerleft">Oszlopválasztó karakter: </label>
+        <input class="innerright" type="text" name="delimiter" autocomplete="off">
+        <input class="innerright" type="submit" value="Upload">
+    </form>
+
+    <div class="innerright, hcenter">
+        <form action="/download/members" method="post">
+            <input type="hidden" name="table" value="members">
+            <button type="submit">Taglista Export</button>
+        </form>
+        <form action="/download/items" method="post">
+            <input type="hidden" name="table" value="items">
+            <button type="submit">Tárgylista Export</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block col2 %}
+
+{% if alert %}
+<div class="success"><strong>{{  alert  }}</strong></div>
+{% endif %}
+
+<div class="maingrid">
+    <form class="gridform" action="/return/form" method="post">
+        <div class="formsubgrid">
+            {% if name %}
+            <label class="innerleft">Név:</label>
+            <input class="innerright" list="members" autocomplete="off" type="text" placeholder="Név" name="name" value="{{  memberID  }}. {{  name  }}">
+            {% else %}
+            <label class="innerleft">Név:</label>
+            <input class="innerright" list="members" autocomplete="off" type="text" placeholder="Név" name="name">
+            {% endif %}
+            <div class="innerright doublebuttoncell">
+                <button class="innerleft" type="submit" formaction="/return">Reset</button>
+                {% if name %}
+                <button class="thirdcolumn" type="submit">Submit</button>
+                {% else %}
+                <button class="thirdcolumn" type="submit">Szűrés</button>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+
+    {% if related %}
+
+    <table class="gridtable">
+        <tr>
+            <th>Név</th>
+            <th>Tárgy</th>
+            <th>Kölcsönzés Kezdete</th>
+            <th>Tervezett Visszavétel</th>
+            <th>Lehetőségek</th>
+        </tr>
+        {% for row in related %}
+        <tr>
+            <td>{{  row["member_name"]  }}</td>
+            <td>{{  row["item_name"]  }}</td>
+            <td>{{  row["start_date"]  }}</td>
+            <td>{{  row["plan_date"]  }}</td>
+            <td>
+                <form action="/return/form" method="post">
+                    <input type="hidden" name="name" value="{{  row['member_id']  }}. {{  row['member_name']  }}">
+                    <input type="hidden" name="item" value="{{  row['item_id']  }}. {{  row['item_name']  }}">
+                    <input type="hidden" name="borrowID" value="{{  row['id']  }}">
+                    <button type="submit">Visszavétel</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+
+    {% endif %}
+    <div class="gridthirdrow innerleft">
+        <h3>Használati útmutató</h3>
+        <p>Ezen a felületen tudod a kölcsönzött tárgyakat visszavételezni. <br>
+        Ehhez először add meg a neved a bal oldali mezőben, majd kattints a "Szűrés" gombra. Ha nem jelenik meg a neved a listában, az azt jelenti, hogy nincs a rendszerben aktív kölcsönzésed. Vagy azért mert véletlenül törölve lett, már valaki véletlenül visszavételezte, vagy elfelejtetted a rendszerben rögzíteni a rendelést. Ha ezen esetek valamelyike merül fel, légyszíves először rögzíts egy kölcsönzést a neveden a szóban forgó tárggyal mai kezdeti és visszahozatali dátummal. Ezt követően vételezd ezt a rendelést vissza.<br>
+        Miután a "Szűrés" gombra kattintasz, jobb oldalon megjelnnek azok a kölcsönzések, amelyek aktívak, és a nevedhez fűzödnek. Keresd meg azt, amelyiket éppen visszavételeznéd, és a táblázat utolsó oszlopában a visszavételezés gombra kattintva már készen is vagy.</p>
+    </div>
+</div>
+
+<datalist id="members">
+    {% for member in members %}
+    <option value="{{  member['id']  }}. {{  member['member_name']  }}"></option>
+    {% endfor %}
+</datalist>
+
+<datalist id="items">
+    {% for item in items %}
+    <option value="{{  item['id']  }}. {{  item['item_name']  }}"></option>
+    {% endfor %}
+</datalist>
+
+{% endblock %}

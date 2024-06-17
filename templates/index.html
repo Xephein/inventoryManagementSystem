@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block col2 %}
+
+<h2>Használati útmutató</h2>
+<!-- <h3>Tartalom</h3>
+<ul style="list-style-type: none;">
+    <li>1. <a href="#general">Általános Tudnivalók</a></li>
+    <li>2. <a href="#borrow">Kölcsönzés</a></li>
+    <li>3. <a href="#return">Tárgy visszavétel</a></li>
+</ul> -->
+
+<h3 id="general">Általános tudnivalók</h3>
+<p>Köszöntelek Benneteket a JPKSZ leltár oldalán!</p>
+<p>Ezen az oldalon olvashattok a leltár használatáról, alább részletes, képekkel ellátott leírással.</p>
+<div class="info">
+    <div class="infoleft">
+        <strong>Figyelem!</strong> A leltár még kidolgozás alatt van. Ha bármilyen hibába ütköztök, vagy nem kívánt működéssel találkoztok a használat során: készítsetek képernyőképeket, és küldjétek el nekem (Friesz Marcinak).
+    </div>
+    <div class="inforight">
+        <strong>Elérhetőség:</strong>
+        <br>fmarci27@gmail.com; Tárgy: Leltár Fejlesztés
+        <br>Vagy Discord-on a #fejlesztési-javaslatok csatornában, a "Leltár fejlesztés" thread-ben.
+    </div>
+</div>
+<p>A navigációhoz a weblap tetején található navigáiós menüsort használjátok! A weblapon két modult értek el:
+    <ul>
+        <li><a href="{{  url_for('imsborrow')  }}">Kölcsönző modul</a></li>
+        <li><a href="{{  url_for('imsreturn')  }}">Visszavételező modul</a></li>
+    </ul>
+    A két modul felületén megtaláljátok a modul használatához szükséges információkat.
+</p>
+
+
+{% endblock %}

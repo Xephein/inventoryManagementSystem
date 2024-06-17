@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block nav %}
+<a href="{{  url_for('admin')  }}">Admin</a>
+<a href="{{  url_for('adminMembers')  }}">Taglista</a>
+<a href="{{  url_for('adminItems')  }}">Tárgylista</a>
+<a href="{{  url_for('adminBorrows')  }}">Kölcsönzések</a>
+<a href="{{  url_for('upload')  }}">Feltöltés</a>
+{% endblock %}
+
+{% block col2 %}
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Név</th>
+        <th>Telefon</th>
+        <th>Bérelhet?</th>
+        <th>Parancsok</th>
+    </tr>
+{% for row in members %}
+    <tr>
+        <td>{{  row["id"]  }}</td>
+        <td>{{  row["member_name"]  }}</td>
+        <td>{{  row["telephone"]  }}</td>
+        <td>{{  row["can_borrow"]  }}</td>
+        <td>
+            <form action="/admin/handler" method="post">
+                <input type="hidden" name="memberID" value="{{  row['id']  }}">
+                <input type="hidden" name="mode" value="members">
+                <!-- UPDATE WITH BUTTON TO TOGGLE CAN BORROW -->
+                <button type="submit" formaction="/admin/toggle">Toggle</button>
+                <button type="submit" formaction="/admin/editor">Szerkesztés</button>
+                <button type="submit">Törlés</button>
+            </form>
+        </td>
+    </tr>
+
+{% endfor %}
+    <tr>
+        <form action="/admin/insert" method="post">
+            <td>Manuális bevitel: </td>
+            <td> <input type="text" name="newName"> </td>
+            <td> <input type="text" name="newContact"> </td>
+            <td></td>
+            <input type="hidden" name="mode" value="memberInsert">
+            <td> <button type="submit">Submit</button> </td>
+        </form>
+    </tr>
+</table>
+
+{% endblock %}

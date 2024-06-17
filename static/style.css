@@ -1,0 +1,219 @@
+body {
+    background-color: #fbfbe9;
+    margin: 0;
+}
+main {
+    margin: max(15vh, 60px) 5vmin;
+}
+main p {
+    text-align: justify;
+}
+/* .row:after {
+    content: "";
+    display: table;
+    clear: both;
+} */
+.alert {
+    background-color: gold;
+    padding: 15px;
+}
+.success {
+    background-color: greenyellow;
+    padding: 15px;
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    display: grid;
+    padding: 3vh 0vw;
+    grid-template-columns: 5vw 25vw 5vw 30vw 10vw 20vw 5vw;
+    background-color: #e5f0c1;
+    border-style: solid;
+    border-width: 1px 0px;
+    border-color: #404040;
+}
+.navbarfirst {
+    grid-column-start: 1;
+    align-self: center;
+    justify-self: end;
+}
+.navbarsecond{
+    grid-column-start: 2;
+    align-self: center;
+    justify-self: start;
+}
+.navbarfourth {
+    grid-column-start: 4;
+    align-self: center;
+    justify-self: center;
+}
+.navbarsixth {
+    grid-column-start: 6;
+    align-self: center;
+    justify-self: end;
+}
+.navbar ul {
+    padding: 5vmin;
+    background-color: #e5f0c1;
+    border-style: solid;
+    border-width: 1px 0px;
+    border-color: #404040;
+    list-style-type: none;
+    overflow: hidden;
+}
+.navbar .left {
+    float: left;
+    display: block;
+    text-align: center;
+}
+.navbar a {
+    margin-right: 1vw;
+    text-decoration: none;
+    color: #000c1a;
+    display: inline-block;
+    text-align: center;
+}
+#logo {
+    height: 5vh;
+}
+main table {
+    margin: 2vh 2vw;
+    border-spacing: 0;
+    background-color: #d4e698;
+    border: 1px solid #4b6932;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+main th {
+    text-align: left;
+    background-color: hsl(74, 61%, 54%);
+}
+main td{
+    transition-duration: 250ms;
+}
+main th, td {
+    padding: 1vw;
+    border-bottom: 1px solid #4b6932;
+    word-wrap: break-word; 
+}
+main tr{
+    transition-duration: 250ms;
+}
+main tr:hover {
+    background-color: #bad758;
+}
+main td:hover {
+    background-color: hsl(74, 61%, 69%);
+}
+main a {
+    color: #4b6932
+}
+main a:visited {
+    color: #4b6932
+}
+input {
+    width: auto;
+    padding: 1vh;
+    margin: 0.2vh 0vh;
+    float: right;
+}
+button {
+    padding: 1vh;
+    margin: 0.2vh 0vw;
+    justify-self: stretch;
+    border: 1px solid #4b6932;
+    border-radius: 2px;
+}
+form button:hover{
+    cursor: pointer;
+}
+.innerleft {
+    grid-column-start: 1;
+    align-self: center;
+}
+.innerright {
+    grid-column-start: 2;
+    align-self: center;
+}
+.maingrid {
+    display: grid;
+    grid-template-columns: [first] 33vw [second] auto [end];
+    grid-template-rows: 10vh 50vh auto;
+}
+.gridthirdrow {
+    grid-row-start: 3;
+    align-self: start;
+    justify-self: start;
+}
+.gridsearchbar {
+    grid-row-start: 1;
+    grid-column-start: 2;
+    align-self: start;
+    justify-self: stretch;
+}
+.gridform {
+    grid-row-start: 2;
+    grid-column-start: 1;
+    align-self: start;
+    justify-self: stretch;
+}
+.gridtable {
+    grid-row-start: 2;
+    grid-column-start: 2;
+    align-self: start;
+    justify-self: stretch;
+}
+.formsubgrid {
+    display: grid;
+    grid-template-columns: [first] 25% [second] 75% [end]
+}
+.doublebuttoncell {
+    display: grid;
+    grid-template-columns: 49% 2% 49%;
+}
+.thirdcolumn {
+    grid-column-start: 3;
+    align-self: center;
+}
+.radioleft {
+    float: left;
+}
+#filterinput {
+    width: 25vw;
+    transition-duration: 250ms;
+}
+.info {
+    display: grid;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    grid-template-columns: [first] 45% [second] 10% [third] 45% [end];
+    border-left: 2vw solid #bad758;
+    padding: 20px;
+    background-color: #6f9b4a;
+    color: white;
+    margin-bottom: 15px;
+}
+.success {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left: 2vw solid #7af0ff;
+    padding: 20px;
+    background-color: #ccf9ff;
+    color: #001b1f;
+    margin-bottom: 15px;
+}
+.infoleft {
+    grid-column-start: 1;
+    justify-self: start;
+    align-self: center;
+}
+.inforight {
+    grid-column-start: 3;
+    justify-self: end;
+    align-self: center;
+}
+
+.hcenter {
+    justify-self: center;
+    align-self: center;
+}

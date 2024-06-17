@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block nav %}
+<a href="{{  url_for('admin')  }}">Admin</a>
+<a href="{{  url_for('adminMembers')  }}">Taglista</a>
+<a href="{{  url_for('adminItems')  }}">Tárgylista</a>
+<a href="{{  url_for('adminBorrows')  }}">Kölcsönzések</a>
+<a href="{{  url_for('upload')  }}">Feltöltés</a>
+{% endblock %}
+
+{% block col2 %}
+
+{% if mode == "members" %}
+
+<form action="/admin/editor" method="post">
+    <input type="hidden" name="memberID" value="{{  member['id']  }}">
+    <input type="hidden" name="mode" value="update">
+    <input type="hidden" name="table" value="{{  mode  }}">
+    <input type="text" name="memberName" value="{{  member['member_name']  }}">
+    <input type="text" name="telephone" value="{{  member['telephone']  }}">
+    <button type="submit">Update</button>
+</form>
+
+{% endif %}
+
+{% if mode == "items" %}
+
+<form action="/admin/editor" method="post">
+    <input type="hidden" name="itemID" value="{{  item['id']  }}">
+    <input type="hidden" name="mode" value="update">
+    <input type="hidden" name="table" value="{{  mode  }}">
+    <input type="text" name="itemName" value="{{  item['item_name']  }}">
+    <input type="text" name="category" value="{{  item['category']  }}">
+    <button type="submit">Update</button>
+</form>
+
+{% endif %}
+
+<!-- POSSIBLY ADD READ FRIENDLY EDITING OF BORROWS -->
+
+<!-- {% if mode == "borrows" %}
+
+<form action="/admin/editor" method="post">
+    <input type="hidden" name="borrowID" value="{{  borrow['id']  }}">
+    <input type="hidden" name="mode" value="update">
+    <input type="hidden" name="table" value="{{  mode  }}">
+    <input type="text" name="itemName" value="{{  borrow['item_name']  }}">
+    <input type="text" name="category" value="{{  item['category']  }}">
+    <button type="submit">Update</button>
+</form>
+
+{% endif %} -->
+
+{% endblock %}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="hu">
+    <head>
+        <meta name="viewport" content="initial-scale=1, width=device-width" charset="utf-8">
+        <title>Inventory Management System</title>
+        <link rel="stylesheet" href="{{  url_for('static', filename='style.css') }}">
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </head>
+
+    <body>
+        <nav class="navbar">
+            <div class="navbarfirst">
+                <img id="logo" src="{{  url_for('static', filename='LogoSötét.png') }}"/>
+            </div>
+            <div class="navbarsecond">JPKSZ leltár</div>
+            <div class="navbarfourth">
+                {% block nav %}{% endblock %}
+            </div>
+            <div class="navbarsixth">
+                <a href="{{  url_for('index')  }}">Kezdőlap</a>
+                <a href="{{  url_for('imsborrow')  }}">Elviszek</a>
+                <a href="{{  url_for('imsreturn')  }}">Visszahozok</a>
+            </div>
+        </nav>
+
+        <main>
+            {% block col2 %}{% endblock %}
+        </main>
+        
+    </body>
+    
+</html>
